@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 
 function MovieList() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
+
+    // clicking on the photo brings you to the id of the movie that is appending
+    const handleClick = (id) => {
+        //history.push moves you to the details page
+        history.push(`/details/${id}`)
+    }
 
     return (
         <main>
@@ -17,7 +25,8 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
+                        // added in onClick to be able to click the photo and it goes to the id of the photo
+                        <div key={movie.id} onClick={() => handleClick(movie.id)}>
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
