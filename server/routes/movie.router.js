@@ -16,6 +16,33 @@ router.get('/', (req, res) => {
 
 });
 
+//creating a get from database to grab the movie descriptions and genres
+router.get('/'), (req, res) => {
+  const query = `
+  SELECT 
+	movies.id,
+	movies.title,
+	movies.poster,
+	movies.description,
+	ARRAY_AGG(genres.name) AS genre
+FROM movies
+JOIN movies_genres
+	on movies.id = movies_genres.movie_id
+RIGHT JOIN genres
+	on movies_genres.genre_id = genres.id
+WHERE movies.id = $1
+GROUP BY movies.id;
+  `
+  pool.query(query)
+  .then( result => {
+    res.send(result.rows)
+  })
+  .catch(err => {
+    console.log('Err getting movie description and genre', err)
+    res.sendStatus(500)
+  })
+}
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
