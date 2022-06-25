@@ -23,7 +23,7 @@ function Details(){
 
         })
     }
-
+    // for appending look at possibly looping through genres display those along with the description
     return(
         <>
         <h3>Details!</h3>
