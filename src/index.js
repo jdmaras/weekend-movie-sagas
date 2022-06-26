@@ -40,7 +40,7 @@ function* fetchDetails(action){
         //
         yield put({
             type: 'SET_DETAILS',
-            payload: movies.data.description
+            payload: movies.data
         })
     }
     catch(err) {

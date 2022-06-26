@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 });
 
 //creating a get from database to grab the movie descriptions and genres
-router.get('/:id'), (req, res) => {
+router.get('/:id', (req, res) => {
+  console.log('Does GET work', req.params)
   const query = `
   SELECT 
 	movies.id,
@@ -37,7 +38,7 @@ GROUP BY movies.id;
   const movieId = [req.params.id]
   // query is the text on the postgres server
   // movieId is the parameter being passed into the query at the $1
-  // movieId has the .param which is the id of what picture I'm clicking on It you click on Avatar which is ID of 1 - it would replace it with 1 upon clicking
+  // movieId has the .param.id which is the id of what picture I'm clicking on It you click on Avatar which is ID of 1 - it would replace it with 1 upon clicking
   pool.query(query, movieId)
   .then( result => {
     res.send(result.rows)
@@ -46,7 +47,7 @@ GROUP BY movies.id;
     console.log('Err getting movie description and genre', err)
     res.sendStatus(500)
   })
-}
+})
 
 router.post('/', (req, res) => {
   console.log(req.body);

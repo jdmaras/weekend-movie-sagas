@@ -20,15 +20,22 @@ function Details(){
             type: 'FETCH_DETAILS',
             payload: params.id
             //payload is the id of the movie you want details for
-
         })
     }
+    console.log('What are the details?', details)
     // for appending look at possibly looping through genres display those along with the description
     return(
         <>
         <h3>Details!</h3>
-        <h2></h2>
         <Link to='/'>Back To Movie List</Link>
+        <div>
+            <ul>{details.map(detail => 
+                <li key={detail.id}>
+                    <img src={detail.poster}/>
+                </li>
+                )}
+            </ul>
+        </div>
         </>
     )
 }
