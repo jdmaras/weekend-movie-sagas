@@ -1,4 +1,27 @@
-.movies {
-    display : flex;
-    flex-wrap: wrap;
+.moviesContainer {
+    display: grid;
+   /* making 3 equal columns and having it repeat */
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 15px 15px;
+
+}
+.movieListCard {
+    outline: 2px solid rgb(0, 0, 0);
+    width: 245px;
+    height: 350px;
+    background-color: aliceblue;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2);
+}
+.movieListCard h3{
+    word-wrap: break-word;
+    white-space: normal;
+}
+.moviePoster{
+    transition:.3s ease-in-out;
+}
+.moviePoster:hover{
+    transform: scale(1.1);
+    z-index: 1;
 }

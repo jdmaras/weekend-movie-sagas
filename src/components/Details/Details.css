@@ -1,0 +1,19 @@
+.linkStyle{
+    margin: auto;
+    text-decoration: none;
+    box-sizing: border-box;
+    width:10rem;
+    transition: color .9s ease-in-out;
+    align-items: center;
+}
+/* in order to grab the actual text in the link, you need to select the "a" from href 
+colin showed you this by doing 'inspect' on the actual link text 
+*/
+.linkStyle a{
+    text-decoration: none;
+    color: rgb(43, 43, 43);
+}
+.linkStyle:hover{
+    font-weight: bold;
+    background-color: rgb(248, 248, 248)
+}

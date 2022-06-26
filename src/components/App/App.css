@@ -11,13 +11,19 @@
 }
 
 .App-title {
-  font-size: 4.5em;
+  font-size: 3.0em;
 }
 
 .App-intro {
   font-size: large;
 }
 
+li{
+    list-style-type: none;
+}
+.movieTitle {
+  font-size: 30px;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

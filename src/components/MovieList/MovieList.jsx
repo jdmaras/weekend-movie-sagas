@@ -21,14 +21,14 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
-            <section className="movies">
+            <h1>Movie List</h1>
+            <section className="moviesContainer">
                 {movies.map(movie => {
                     return (
                         // added in onClick to be able to click the photo and it goes to the id of the photo
-                        <div key={movie.id} onClick={() => handleClick(movie.id)}>
+                        <div className="movieListCard" key={movie.id} onClick={() => handleClick(movie.id)}>
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <p className='moviePoster'><img src={movie.poster} alt={movie.title}/></p>
                         </div>
                     );
                 })}
