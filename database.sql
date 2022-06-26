@@ -79,3 +79,19 @@ VALUES
 (12,8), (12,9),           -- Social Net
 (13,4), (13,10), (13,6),  -- Titanic
 (14,3), (14,2), (14,4);   -- Toy Story
+
+
+-- WHAT A DOOZY to grab genres and descriptions
+SELECT 
+	movies.id,
+	movies.title,
+	movies.poster,
+	movies.description,
+	ARRAY_AGG(genres.name) AS genre
+FROM movies
+JOIN movies_genres
+	on movies.id = movies_genres.movie_id
+RIGHT JOIN genres
+	on movies_genres.genre_id = genres.id
+WHERE movies.id = 1
+GROUP BY movies.id;
