@@ -11,6 +11,7 @@ import MovieList from '../MovieList/MovieList';
 function App() {
   return (
     <div className='App'>
+      <div className='backGround'>
       <Header />
       <Router>        
         <Route path="/" exact>
@@ -26,6 +27,7 @@ function App() {
           <AddMovie />
         </Route>
       </Router>
+      </div>
     </div>
   );
 }

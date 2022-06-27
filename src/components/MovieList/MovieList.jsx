@@ -10,7 +10,8 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({ 
+            type: 'FETCH_MOVIES' });
     }, []);
 
     // clicking on the photo brings you to the id of the movie that is appending
