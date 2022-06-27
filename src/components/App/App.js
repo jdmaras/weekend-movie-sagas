@@ -18,7 +18,7 @@ function App() {
           <MovieList />
         </Route>
         
-        {/* Details page */}
+        {/* Details page with that :id placeholder*/}
         <Route path="/details/:id" exact>
           <Details/>
         </Route>

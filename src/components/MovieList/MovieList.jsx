@@ -25,8 +25,10 @@ function MovieList() {
             <h1>Movie List</h1>
             <section className="moviesContainer">
                 {movies.map(movie => {
+                    //if you have the second return in here, it lets you do a console.log if you want
+                    //console.log('movies.map', movies)
                     return (
-                        // added in onClick to be able to click the photo and it goes to the id of the photo
+                        // added in onClick to be able to click the photo and it goes to the id of the photo                    
                         <div className="movieListCard" key={movie.id} onClick={() => handleClick(movie.id)}>
                             <h3>{movie.title}</h3>
                             <p className='moviePoster'><img src={movie.poster} alt={movie.title}/></p>

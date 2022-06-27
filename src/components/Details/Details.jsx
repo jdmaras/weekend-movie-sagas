@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import "./Details.css";
 
 
@@ -10,12 +10,13 @@ function Details(){
     console.log('This is the details store', details)
     const params = useParams()
     //useParams returns an object of key/value pairs of URL parameters. Use it to access match.params of the current <Route>.
-    // it's basically like req.params from backend
+    // useParams is basically like req.params from backend
     console.log('Does this show id?', params)
     useEffect(() => {
         getDetails()
     }, []);
     
+    // this is your ACTION in the circle of redux - this goes to the saga in index.js
     const getDetails = () => {
         dispatch({
             type: 'FETCH_DETAILS',

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// GET /api/movie
+// returns a list of movies
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -16,9 +18,11 @@ router.get('/', (req, res) => {
 
 });
 
-//creating a get from database to grab the movie descriptions and genres
+//creating a get from database to grab the single movie's descriptions AND genres
 router.get('/:id', (req, res) => {
-  console.log('Does GET work', req.params)
+                          //the backticks AROUND your literal
+  console.log(`Does GET work ${req.params.id}`)
+  // before you start writing any of the query, you can send a console.log and use POSTMAN to see if it's connected at what you're starting your get with 
   const query = `
   SELECT 
 	movies.id,
@@ -41,7 +45,9 @@ GROUP BY movies.id;
   // movieId has the .param.id which is the id of what picture I'm clicking on It you click on Avatar which is ID of 1 - it would replace it with 1 upon clicking
   pool.query(query, movieId)
   .then( result => {
+              //result.rows[0] would send back just 1 item instead of all of them
     res.send(result.rows)
+            // think about writing dbRes instead of result when grabbing from DB
   })
   .catch(err => {
     console.log('Err getting movie description and genre', err)
@@ -49,6 +55,8 @@ GROUP BY movies.id;
   })
 })
 
+// POST /api/movie
+// Creates a movie (add movie)
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

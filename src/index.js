@@ -21,7 +21,7 @@ function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
+        //console.log('get all:', movies.data);
         yield put({ 
             type: 'SET_MOVIES', 
             payload: movies.data })
@@ -34,10 +34,10 @@ function* fetchAllMovies() {
 function* fetchDetails(action){
     // get a nicely packaged details for details page
     try{
-        
+        //making a variable of 'movies' so it's easier to work with
         const movies = yield axios.get(`/api/movie/${action.payload}`);
         console.log('get descriptions', movies.data.description);
-        //
+        //dispatching the PUT with type and then the data
         yield put({
             type: 'SET_DETAILS',
             payload: movies.data
@@ -64,6 +64,7 @@ const details = (state = [], action) => {
 
 
 // Used to store movies returned from the server
+// This would be considered a PUT for dispatching it to the reducer
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -73,7 +74,7 @@ const movies = (state = [], action) => {
     }
 }
 
-// Used to store the movie genres
+// Used to store the movie genres + movie information
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':

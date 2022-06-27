@@ -83,15 +83,15 @@ VALUES
 
 -- WHAT A DOOZY to grab genres and descriptions
 SELECT 
-	movies.id,
+	movies.id,  --movies.*    that will grab all of the columns in movies instead of the rest
 	movies.title,
 	movies.poster,
 	movies.description,
-	ARRAY_AGG(genres.name) AS genre
+	ARRAY_AGG(genres.name) AS genre -- array_agg(to_json(genres)) - turns this into an object
 FROM movies
 JOIN movies_genres
 	on movies.id = movies_genres.movie_id
 RIGHT JOIN genres
 	on movies_genres.genre_id = genres.id
 WHERE movies.id = 1
-GROUP BY movies.id;
+GROUP BY movies.id; -- This squishes down to be one movie at that id
